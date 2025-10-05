@@ -1,14 +1,18 @@
 import { Outlet } from 'react-router-dom';
 import { Navbar } from './components/Navbar/Navbar';
-import './App.scss';
+import styles from './App.module.scss';
 
 function App() {
   return (
-    <>
+    <div className={styles.appContainer}>
       <Navbar />
-      <Outlet />
-    </>
+      <main className={styles.mainContent}>
+        <Outlet />
+      </main>
+    </div>
   );
 }
 
 export default App;
+
+// main className={styles['main-content']
