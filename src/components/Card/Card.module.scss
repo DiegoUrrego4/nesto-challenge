@@ -1,0 +1,90 @@
+@import '../../variables';
+
+.card {
+  width: 40rem;
+  min-height: 50rem;
+  padding: 3rem;
+  
+  background-color: #ffffff;
+  border-radius: 1.6rem;
+  box-shadow: 0 0.8rem 2.4rem rgba(34, 35, 68, 0.1);
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center; 
+  text-align: center;
+  
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 1.2rem 3.2rem rgba(34, 35, 68, 0.3);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0.6rem;
+    background: linear-gradient(90deg,$dark-blue-background, $nesto-light-blue, $nesto-red, $nesto-dark-yellow, $button-text);
+  }
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 2.2rem;
+  color: $nesto-light-blue;
+  font-weight: bold;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 1.5rem; 
+  color: $input-text;
+  margin: 0.5rem 0;
+}
+
+.productName {
+  font-size: 1.5rem;
+  color: $input-text;
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+.rate {
+  font-size: 6.8rem; 
+  font-weight: 800; 
+  color: $dark-blue-background; 
+  margin: 2rem 0;
+}
+
+.button {
+  width: 100%;
+  padding: 1.4rem;
+  border: 0.1rem solid $primary-link;
+  border-radius: 5rem;
+  
+  background-color: transparent;
+  color: $primary-link;
+  
+  font-size: 1.6rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+
+  margin-top: auto;
+
+  &:hover {
+    transform: scale(1.03);
+    background-color: darken($primary-link, 8%);
+    color: $button-text;
+  }
+}
