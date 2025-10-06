@@ -3,15 +3,17 @@ import styles from './Card.module.scss';
 import { formatProductFamily } from '../../utils';
 
 interface CardProps {
+  id: number;
   title: string;
   type: string;
   productName: string;
   rate: string;
 
-  onSelectProduct?: () => void;
+  onSelectProduct?: (productID: number) => void;
 }
 
 export const Card: FC<CardProps> = ({
+  id,
   title,
   type,
   productName,
@@ -29,7 +31,7 @@ export const Card: FC<CardProps> = ({
 
       <p className={styles.rate}>{rate}</p>
 
-      <button className={styles.button} onClick={onSelectProduct}>
+      <button className={styles.button} onClick={() => onSelectProduct?.(id)}>
         Select this product
       </button>
     </div>

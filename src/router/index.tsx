@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import App from '../App';
 import { HomePage } from '../pages/HomePage';
 import { ApplicationPage } from '../pages/ApplicationPage';
+import { ApplicationFormPage } from '../pages/ApplicationFormPage';
 
 export const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ export const router = createBrowserRouter([
       {
         path: 'applications',
         element: <ApplicationPage />,
+      },
+      {
+        path: 'application/:applicationId',
+        element: <ApplicationFormPage />,
       },
     ],
   },

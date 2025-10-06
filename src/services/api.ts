@@ -1,5 +1,6 @@
 import axios, { type AxiosInstance } from 'axios';
 import type { Product } from '../types/product';
+import type { Application, CreateApplication } from '../types';
 
 const DEFAULT_HEADERS = {
   Accept: 'application/json',
@@ -22,5 +23,16 @@ export const getProducts = async (): Promise<Product[]> => {
   } catch (error) {
     console.error('Failed to fetch products:', error);
     throw new Error('Failed to fetch products');
+  }
+};
+
+export const createApplication = async (productId: number): Promise<Application> => {
+  try {
+    const payload: CreateApplication = { productId };
+    const response = await api.post<Application>('/applications', payload);
+    return response.data;
+  } catch (error) {
+    console.error('Failed to create application:', error);
+    throw new Error('Failed to create application');
   }
 };
