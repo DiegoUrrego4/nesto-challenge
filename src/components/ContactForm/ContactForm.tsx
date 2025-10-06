@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
-import type { Application, Applicant } from '../../types';
+import { useState, useEffect, type FormEvent } from 'react';
+import type { Application } from '../../types';
 import { updateApplication } from '../../services/api';
+import { useForm } from '../../hooks';
 import styles from './ContactForm.module.scss';
 
 interface ContactFormProps {
@@ -15,27 +16,37 @@ const initialFormData = {
 };
 
 export const ContactForm = ({ application }: ContactFormProps) => {
-  const [formData, setFormData] = useState<Omit<Applicant, 'id'>>(initialFormData);
+  const {
+    formState,
+    firstName,
+    lastName,
+    email,
+    phone,
+    onInputChange,
+    setFormState,
+  } = useForm(initialFormData);
+
   const [isSaving, setIsSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
 
   useEffect(() => {
-    if (application.applicants && application.applicants[0]) {
-      setFormData(application.applicants[0]);
+    if (application?.applicants?.[0]) {
+      const applicantData = application.applicants[0];
+      setFormState({
+        firstName: applicantData.firstName || '',
+        lastName: applicantData.lastName || '',
+        email: applicantData.email || '',
+        phone: applicantData.phone || '',
+      });
     }
-  }, [application]);
+  }, [application, setFormState]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prevData => ({ ...prevData, [name]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSaving(true);
     setSaveSuccess(false);
     try {
-      await updateApplication(application.id, { applicants: [formData] });
+      await updateApplication(application.id, { applicants: [formState] });
       setSaveSuccess(true);
       setTimeout(() => setSaveSuccess(false), 3000);
     } catch (error) {
@@ -43,6 +54,7 @@ export const ContactForm = ({ application }: ContactFormProps) => {
       alert('Error saving data. Please try again.');
     } finally {
       setIsSaving(false);
+      // TODO: redirigir a home
     }
   };
 
@@ -56,8 +68,8 @@ export const ContactForm = ({ application }: ContactFormProps) => {
             type="text"
             id="firstName"
             name="firstName"
-            value={formData.firstName}
-            onChange={handleChange}
+            value={firstName}
+            onChange={onInputChange}
             required
           />
         </div>
@@ -67,8 +79,8 @@ export const ContactForm = ({ application }: ContactFormProps) => {
             type="text"
             id="lastName"
             name="lastName"
-            value={formData.lastName}
-            onChange={handleChange}
+            value={lastName}
+            onChange={onInputChange}
             required
           />
         </div>
@@ -78,8 +90,8 @@ export const ContactForm = ({ application }: ContactFormProps) => {
             type="email"
             id="email"
             name="email"
-            value={formData.email}
-            onChange={handleChange}
+            value={email}
+            onChange={onInputChange}
             required
           />
         </div>
@@ -89,8 +101,8 @@ export const ContactForm = ({ application }: ContactFormProps) => {
             type="tel"
             id="phone"
             name="phone"
-            value={formData.phone}
-            onChange={handleChange}
+            value={phone}
+            onChange={onInputChange}
             required
           />
         </div>
