@@ -1,5 +1,6 @@
 import type { FC } from 'react';
 import styles from './Card.module.scss';
+import { formatProductFamily } from '../../utils';
 
 interface CardProps {
   title: string;
@@ -21,7 +22,7 @@ export const Card: FC<CardProps> = ({
     <div className={styles.card}>
       <div className={styles.header}>
         <h2 className={styles.title}>{title}</h2>
-        <p className={styles.subtitle}>{type}</p>
+        <p className={styles.subtitle}>{formatProductFamily(type)}</p>
       </div>
 
       <p className={styles.productName}>{productName}</p>
