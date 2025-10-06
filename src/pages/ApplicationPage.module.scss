@@ -1,0 +1,27 @@
+@import '../variables';
+
+.emptyStateContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.6rem;
+}
+
+.illustration {
+  max-width: 30rem;
+  height: auto;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 2.4rem;
+  color: $dark-blue-background;
+  font-weight: 700;
+}
+
+.text {
+  font-size: 1.6rem;
+  color: $input-text;
+  line-height: 1.6;
+}
