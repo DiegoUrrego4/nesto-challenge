@@ -14,5 +14,3 @@ function App() {
 }
 
 export default App;
-
-// main className={styles['main-content']
