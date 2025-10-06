@@ -59,3 +59,13 @@ export const updateApplication = async (
     throw new Error('Failed to update application');
   }
 };
+
+export const getApplications = async (): Promise<Application[]> => {
+    try {
+        const response = await api.get<Application[]>('/applications');
+        return response.data;
+    } catch (error) {
+        console.error('Failed to fetch applications:', error);
+        throw new Error('Failed to fetch applications');
+    }
+};

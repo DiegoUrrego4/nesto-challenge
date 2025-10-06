@@ -1,9 +1,8 @@
 // import { useParams } from 'react-router-dom';
 import { SpinnerDotted } from 'spinners-react';
 import { useApplicationDetails } from '../hooks/useApplicationDetails';
-import { Card } from '../components/Card/Card';
-import { ContactForm } from '../components/ContactForm/ContactForm'; // Crearemos este componente ahora
-import styles from './ApplicationFormPage.module.scss'; // Necesitarás un .scss para esta página
+import { Card, ContactForm } from '../components';
+import styles from './ApplicationFormPage.module.scss';
 
 export const ApplicationFormPage = () => {
   // const { applicationId } = useParams<{ applicationId: string }>();

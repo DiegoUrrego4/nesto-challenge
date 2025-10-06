@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from '../App';
 import { HomePage } from '../pages/HomePage';
-import { ApplicationPage } from '../pages/ApplicationPage';
+import { ApplicationsListPage } from '../pages/ApplicationsListPage.tsx';
 import { ApplicationFormPage } from '../pages/ApplicationFormPage';
 
 export const router = createBrowserRouter([
@@ -15,7 +15,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'applications',
-        element: <ApplicationPage />,
+        element: <ApplicationsListPage />,
       },
       {
         path: 'application/:applicationId',
