@@ -1,0 +1,92 @@
+@import '../../variables';
+
+.formContainer {
+  background-color: #ffffff;
+  padding: 3rem;
+  border-radius: 1.6rem;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.05);
+
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0.6rem;
+    background: linear-gradient(90deg, $nesto-light-blue, $nesto-dark-yellow);
+  }
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: $dark-blue-background;
+  margin-top: 0;
+  margin-bottom: 2.4rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+
+  label {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: $input-text;
+    margin-bottom: 0.8rem;
+  }
+
+  input {
+    font-size: 1.6rem;
+    padding: 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: 0.8rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &:focus {
+      outline: none;
+      border-color: $primary-link;
+      box-shadow: 0 0 0 3px rgba($primary-link, 0.2);
+    }
+  }
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  margin-top: 3rem;
+
+  button {
+    padding: 1.2rem 2.4rem;
+    border: 1px solid $primary-link;
+    border-radius: 5rem;
+    background-color: transparent;
+    color: $primary-link;
+    font-size: 1.6rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      background-color: $primary-link;
+      color: #ffffff;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.saveSuccess {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #28a745;
+}

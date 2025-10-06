@@ -1,0 +1,24 @@
+.formPageContainer {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  width: 100%;
+  
+  align-items: stretch;
+}
+
+.formColumn {
+  flex: 1;
+  max-width: 60rem;
+}
+
+@media (max-width: 900px) {
+  .formPageContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .productColumn {
+    margin-bottom: 4rem;
+  }
+}

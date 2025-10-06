@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { Card } from '../components/Card/Card';
 import { SpinnerDotted } from 'spinners-react';
 import { useMortgageProducts } from '../hooks';
+import { createApplication } from '../services/api';
 import styles from './HomePage.module.scss';
 
 export const HomePage = () => {
@@ -9,16 +10,15 @@ export const HomePage = () => {
   const { bestFixedProduct, bestVariableProduct, isLoading, error } =
     useMortgageProducts();
 
-  const handleSelectedProduct = (productId: number) => {
-  //   try {
-  //   const newApplication = await createApplication(productId);
-  //   console.log('ID de aplicación para pruebas:', newApplication.id);
-  //   navigate(`/application/${newApplication.id}`);
-  // } catch (error) {
-  //   console.error('Falló la creación para pruebas:', error);
-  // }
-    console.log(`Simulando navegación para el producto ID: ${productId}`);
-    navigate(`application/${productId}`);
+  const handleSelectedProduct = async (productId: number) => {
+    //   try {
+    //   const newApplication = await createApplication(productId);
+    //   console.log('ID de aplicación para pruebas:', newApplication.id);
+    //   navigate(`/application/${newApplication.id}`);
+    // } catch (error) {
+    //   console.error('Falló la creación para pruebas:', error);
+    // }
+    navigate(`/application/${productId}`);
   };
 
   if (isLoading) {

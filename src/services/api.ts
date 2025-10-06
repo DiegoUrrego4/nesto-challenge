@@ -36,3 +36,26 @@ export const createApplication = async (productId: number): Promise<Application>
     throw new Error('Failed to create application');
   }
 };
+
+export const getApplicationById = async (id: string): Promise<Application> => {
+  try {
+    const response = await api.get<Application>(`/applications/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error(`Failed to fetch application with id ${id}:`, error);
+    throw new Error('Failed to fetch application');
+  }
+};
+
+export const updateApplication = async (
+  id: string,
+  payload: Partial<Application>
+): Promise<Application> => {
+  try {
+    const response = await api.put<Application>(`/applications/${id}`, payload);
+    return response.data;
+  } catch (error) {
+    console.error(`Failed to update application with id ${id}:`, error);
+    throw new Error('Failed to update application');
+  }
+};
