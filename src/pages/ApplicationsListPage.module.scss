@@ -56,3 +56,49 @@
     border-color: #aaa;
   }
 }
+
+.paginationControls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+  margin-top: 3.2rem;
+  user-select: none;
+
+  span {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #555;
+  }
+
+  button {
+    padding: 1rem 2rem;
+    border: 1px solid #ccc;
+    border-radius: 0.8rem;
+    background-color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.5rem;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background-color: #f8f9fa;
+      border-color: #bbb;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.centeredMessage,
+.centeredMessageError {
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.centeredMessageError {
+  color: var.$red;
+}
