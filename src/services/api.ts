@@ -4,7 +4,7 @@ import type { Application, CreateApplication, Product } from '../types';
 const DEFAULT_HEADERS = {
   Accept: 'application/json',
   'Content-Type': 'application/json',
-  'x-nesto-candidat': 'Diego Urrego',
+  'x-nesto-candidat': import.meta.env.VITE_NESTO_CANDIDAT,
 };
 
 export const api: AxiosInstance = axios.create({

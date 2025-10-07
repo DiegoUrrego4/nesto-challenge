@@ -7,6 +7,7 @@ import styles from './ApplicationsListPage.module.scss';
 
 export const ApplicationsListPage = () => {
   const { applications, isLoading, error } = useApplicationsList();
+  const itemsPerPage = Number(import.meta.env.VITE_PAGINATION_ITEMS_PER_PAGE) || 5;
   const {
     currentData,
     currentPage,
@@ -15,7 +16,7 @@ export const ApplicationsListPage = () => {
     prevPage,
     canNextPage,
     canPrevPage,
-  } = usePagination(applications, 5);
+  } = usePagination(applications, itemsPerPage);
 
   if (isLoading) {
     return <SpinnerDotted className={styles.centered} color="red" />;
