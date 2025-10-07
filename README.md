@@ -69,3 +69,16 @@ To clone and run this project on your machine, follow these steps:
     ```
 
 4.  Open your browser and navigate to `http://localhost:5173`.
+
+---
+
+## storybook Component Library
+
+This project uses Storybook for UI component development, testing, and documentation. Each reusable component (`Card`, `Navbar`, `ContactForm`, etc.) has its own set of "stories" that showcase its different states and props.
+
+### Running Storybook Locally
+
+To browse the component library, run the following command:
+
+```bash
+pnpm run storybook
