@@ -102,3 +102,8 @@
 .centeredMessageError {
   color: var.$red;
 }
+
+.tableWrapper {
+  overflow-x: auto;
+  width: 100%;
+}

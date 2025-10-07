@@ -17,3 +17,10 @@
   font-weight: 500;
   color: red;
 }
+
+@media (max-width: 768px) {
+  .homeContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+}

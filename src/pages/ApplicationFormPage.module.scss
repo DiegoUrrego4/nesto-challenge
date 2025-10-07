@@ -22,3 +22,19 @@
     margin-bottom: 4rem;
   }
 }
+
+@media (max-width: 900px) {
+  .formPageContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .productColumn {
+    margin-bottom: 4rem;
+    width: 100%;
+  }
+
+  .formColumn {
+    width: 100%;
+  }
+}

@@ -90,3 +90,19 @@
     color: var.$button-text;
   }
 }
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+    min-height: auto;
+    padding: 2.4rem;
+  }
+
+  .rate {
+    font-size: 6rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+}

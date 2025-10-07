@@ -21,7 +21,7 @@ export const ApplicationsListPage = () => {
   } = usePagination(applications, itemsPerPage);
 
   if (isLoading) {
-    return <SpinnerDotted className={styles.centered} color="red" />;
+    return <SpinnerDotted className={styles.centeredMessage} color="red" />;
   }
 
   if (error) {
@@ -34,41 +34,42 @@ export const ApplicationsListPage = () => {
 
   return (
     <div className={styles.listContainer}>
-      <table className={styles.appsTable}>
-        <thead>
-          <tr>
-            <th>{t('list.table.name')}</th>
-            <th>{t('list.table.email')}</th>
-            <th>{t('list.table.phone')}</th>
-            <th>{t('list.table.product')}</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentData.map((app) => (
-            <tr key={app.id}>
-              <td>{`${app.applicants[0].firstName} ${app.applicants[0].lastName}`}</td>
-              <td>{app.applicants[0].email}</td>
-              <td>{app.applicants[0].phone}</td>
-              <td>{app.productName}</td>
-              <td>
-                <Link to={`/application/${app.id}`} className={styles.editButton}>
-                  {t('list.table.edit')}
-                </Link>
-              </td>
+      <h1>{t('list.title')}</h1>
+      <div className={styles.tableWrapper}>
+        <table className={styles.appsTable}>
+          <thead>
+            <tr>
+              <th>{t('list.table.name')}</th>
+              <th>{t('list.table.email')}</th>
+              <th>{t('list.table.phone')}</th>
+              <th>{t('list.table.product')}</th>
+              <th></th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {currentData.map((app) => (
+              <tr key={app.id}>
+                <td>{`${app.applicants[0].firstName} ${app.applicants[0].lastName}`}</td>
+                <td>{app.applicants[0].email}</td>
+                <td>{app.applicants[0].phone}</td>
+                <td>{app.productName}</td>
+                <td>
+                  <Link to={`/application/${app.id}`} className={styles.editButton}>
+                    {t('list.table.edit')}
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       {totalPages > 1 && (
         <div className={styles.paginationControls}>
           <button onClick={prevPage} disabled={!canPrevPage}>
             {t('list.pagination.previous')}
           </button>
-          <span>
-           {t('list.pagination.page', { currentPage, totalPages })}
-          </span>
+          <span>{t('list.pagination.page', { currentPage, totalPages })}</span>
           <button onClick={nextPage} disabled={!canNextPage}>
             {t('list.pagination.next')}
           </button>
