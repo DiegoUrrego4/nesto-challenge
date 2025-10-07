@@ -1,0 +1,47 @@
+{
+  "nav": {
+    "applications": "Applications"
+  },
+  "card": {
+    "selectProduct": "Select this product",
+    "bestFixed": "Best fixed",
+    "bestVariable": "Best variable"
+  },
+  "form": {
+    "title": "Main applicant information",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "phone": "Phone",
+    "saveButton": "Save applicant info",
+    "savingButton": "Saving...",
+    "saveSuccess": "✓ Saved!",
+    "validation": {
+      "required": "{{field}} is required",
+      "email": "Please enter a valid email address",
+      "phone": "Phone number must have at least 10 digits"
+    }
+  },
+  "list": {
+    "title": "Your Applications",
+    "empty": "You have no completed applications yet.",
+    "table": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "product": "Product",
+      "edit": "Edit"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page {{currentPage}} of {{totalPages}}"
+    }
+  },
+  "emptyState": {
+    "title": "You have no applications yet",
+    "text": "It seems you haven't started an application.",
+    "cta": "Let's find the best rate for you!"
+  },
+  "loading": "Loading..."
+}

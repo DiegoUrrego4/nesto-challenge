@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import { formatProductFamily } from '../../utils';
 import styles from './Card.module.scss';
 
@@ -20,6 +21,7 @@ export const Card: FC<CardProps> = ({
   rate,
   onSelectProduct,
 }) => {
+  const { t } = useTranslation();
   return (
     <div className={styles.card}>
       <div className={styles.header}>
@@ -32,7 +34,7 @@ export const Card: FC<CardProps> = ({
       <p className={styles.rate}>{rate}</p>
 
       <button className={styles.button} onClick={() => onSelectProduct?.(id)}>
-        Select this product
+        {t('card.selectProduct')}
       </button>
     </div>
   );

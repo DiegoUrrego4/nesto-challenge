@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import noApplicationsImage from '@/assets/no-applications.png';
 import styles from './EmptyState.module.scss';
 
 export const EmptyState = () => {
+    const { t } = useTranslation();
+
     return (
         <div className={styles.emptyStateContainer}>
             <img
@@ -10,10 +13,10 @@ export const EmptyState = () => {
                 alt="A sad house because there are no applications"
                 className={styles.illustration}
             />
-            <h2 className={styles.title}>You have no applications yet</h2>
+            <h2 className={styles.title}>{t('emptyState.title')}</h2>
             <p className={styles.text}>
-                It seems you haven't started an application. <br />
-                <Link to="/" className={styles.link}>Let's find the best rate for you!</Link>
+                {t('emptyState.text')}{' '} <br />
+                <Link to="/" className={styles.link}>{t('emptyState.cta')}</Link>
             </p>
         </div>
     );

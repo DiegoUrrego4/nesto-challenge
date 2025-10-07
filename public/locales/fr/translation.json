@@ -1,0 +1,47 @@
+{
+  "nav": {
+    "applications": "Mes Demandes"
+  },
+  "card": {
+    "selectProduct": "Sélectionner ce produit",
+    "bestFixed": "Meilleur fixe",
+    "bestVariable": "Meilleur variable"
+  },
+  "form": {
+    "title": "Informations sur le demandeur principal",
+    "firstName": "Prénom",
+    "lastName": "Nom de famille",
+    "email": "Courriel",
+    "phone": "Téléphone",
+    "saveButton": "Enregistrer les informations",
+    "savingButton": "Enregistrement...",
+    "saveSuccess": "✓ Enregistré!",
+    "validation": {
+      "required": "Le {{field}} est requis",
+      "email": "Veuillez entrer une adresse courriel valide",
+      "phone": "Le numéro de téléphone doit comporter au moins 10 chiffres"
+    }
+  },
+  "list": {
+    "title": "Vos Demandes",
+    "empty": "Vous n'avez pas encore de demandes complétées.",
+    "table": {
+      "name": "Nom",
+      "email": "Courriel",
+      "phone": "Téléphone",
+      "product": "Produit",
+      "edit": "Modifier"
+    },
+    "pagination": {
+      "previous": "Précédent",
+      "next": "Suivant",
+      "page": "Page {{currentPage}} sur {{totalPages}}"
+    }
+  },
+  "emptyState": {
+    "title": "Vous n'avez pas encore de demandes",
+    "text": "Il semble que vous n'ayez pas commencé de demande.",
+    "cta": "Trouvons le meilleur taux pour vous!"
+  },
+  "loading": "Chargement..."
+}

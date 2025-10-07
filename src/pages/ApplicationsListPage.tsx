@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { SpinnerDotted } from 'spinners-react';
 import { useApplicationsList } from '../hooks/useApplicationsList';
 import { usePagination } from '../hooks/usePagination';
@@ -6,6 +7,7 @@ import { EmptyState } from '../components/EmptyState/EmptyState';
 import styles from './ApplicationsListPage.module.scss';
 
 export const ApplicationsListPage = () => {
+  const { t } = useTranslation();
   const { applications, isLoading, error } = useApplicationsList();
   const itemsPerPage = Number(import.meta.env.VITE_PAGINATION_ITEMS_PER_PAGE) || 5;
   const {
@@ -35,10 +37,10 @@ export const ApplicationsListPage = () => {
       <table className={styles.appsTable}>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Product</th>
+            <th>{t('list.table.name')}</th>
+            <th>{t('list.table.email')}</th>
+            <th>{t('list.table.phone')}</th>
+            <th>{t('list.table.product')}</th>
             <th></th>
           </tr>
         </thead>
@@ -51,7 +53,7 @@ export const ApplicationsListPage = () => {
               <td>{app.productName}</td>
               <td>
                 <Link to={`/application/${app.id}`} className={styles.editButton}>
-                  Edit
+                  {t('list.table.edit')}
                 </Link>
               </td>
             </tr>
@@ -62,13 +64,13 @@ export const ApplicationsListPage = () => {
       {totalPages > 1 && (
         <div className={styles.paginationControls}>
           <button onClick={prevPage} disabled={!canPrevPage}>
-            Previous
+            {t('list.pagination.previous')}
           </button>
           <span>
-            Page {currentPage} of {totalPages}
+           {t('list.pagination.page', { currentPage, totalPages })}
           </span>
           <button onClick={nextPage} disabled={!canNextPage}>
-            Next
+            {t('list.pagination.next')}
           </button>
         </div>
       )}

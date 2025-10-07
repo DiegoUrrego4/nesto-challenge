@@ -4,8 +4,10 @@ import { Card } from '../components';
 import { useMortgageProducts } from '../hooks';
 import { createApplication } from '../services/api';
 import styles from './HomePage.module.scss';
+import { useTranslation } from 'react-i18next';
 
 export const HomePage = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { bestFixedProduct, bestVariableProduct, isLoading, error } =
     useMortgageProducts();
@@ -33,7 +35,7 @@ export const HomePage = () => {
       {bestFixedProduct && (
         <Card
           id={bestFixedProduct.id}
-          title="Best fixed"
+          title={t('card.bestFixed')}
           type={bestFixedProduct.family}
           productName={bestFixedProduct.name}
           rate={`${bestFixedProduct.bestRate}%`}
@@ -43,7 +45,7 @@ export const HomePage = () => {
       {bestVariableProduct && (
         <Card
           id={bestVariableProduct.id}
-          title="Best variable"
+          title={t('card.bestVariable')}
           type={bestVariableProduct.family}
           productName={bestVariableProduct.name}
           rate={`${bestVariableProduct.bestRate}%`}

@@ -1,31 +1,35 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import type { TFunction } from 'i18next';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 import type { Application } from '../../types';
 import { updateApplication } from '../../services/api';
 import styles from './ContactForm.module.scss';
 
-const applicantSchema = z.object({
-  firstName: z.string().min(1, 'First name is required'),
-  lastName: z.string().min(1, 'Last name is required'),
-  email: z
-    .string()
-    .min(1, 'Email is required')
-    .email('Please enter a valid email address'),
-  phone: z
-    .string()
-    .min(1, 'Phone number is required')
-    .regex(/^\d{10}$/, 'Please enter a valid 10-digit phone number'),
+const createApplicantSchema = (t: TFunction) => z.object({
+  firstName: z.string().min(1, t('form.validation.required', { field: t('form.firstName') })),
+  lastName: z.string().min(1, t('form.validation.required', { field: t('form.lastName') })),
+  email: z.string()
+    .min(1, t('form.validation.required', { field: t('form.email') }))
+    .email(t('form.validation.email')),
+  phone: z.string()
+    .min(1, t('form.validation.required', { field: t('form.phone') }))
+    .refine((phone) => phone.replace(/\D/g, '').length >= 10, t('form.validation.phone')),
 });
 
-type ApplicantFormData = z.infer<typeof applicantSchema>;
+
+type ApplicantFormData = z.infer<ReturnType<typeof createApplicantSchema>>;
 
 interface ContactFormProps {
   application: Application;
 }
 
 export const ContactForm = ({ application }: ContactFormProps) => {
+  const { t } = useTranslation();
+  const applicantSchema = useMemo(() => createApplicantSchema(t), [t]);
+
   const {
     register,
     handleSubmit,
@@ -57,11 +61,11 @@ export const ContactForm = ({ application }: ContactFormProps) => {
 
   return (
     <div className={styles.formContainer}>
-      <h2>Main applicant information</h2>
+      <h2>{t('form.title')}</h2>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.formGroup}>
-          <label htmlFor="firstName">First name</label>
+          <label htmlFor="firstName">{t('form.firstName')}</label>
           <input
             id="firstName"
             type="text"
@@ -74,7 +78,7 @@ export const ContactForm = ({ application }: ContactFormProps) => {
         </div>
 
         <div className={styles.formGroup}>
-          <label htmlFor="lastName">Last name</label>
+          <label htmlFor="lastName">{t('form.lastName')}</label>
           <input
             id="lastName"
             type="text"
@@ -87,7 +91,7 @@ export const ContactForm = ({ application }: ContactFormProps) => {
         </div>
 
         <div className={styles.formGroup}>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">{t('form.email')}</label>
           <input
             id="email"
             type="email"
@@ -100,7 +104,7 @@ export const ContactForm = ({ application }: ContactFormProps) => {
         </div>
 
         <div className={styles.formGroup}>
-          <label htmlFor="phone">Phone</label>
+          <label htmlFor="phone">{t('form.phone')}</label>
           <input
             id="phone"
             type="tel"
@@ -114,9 +118,9 @@ export const ContactForm = ({ application }: ContactFormProps) => {
 
         <div className={styles.buttonContainer}>
           <button type="submit" disabled={!isDirty || !isValid || isSubmitting}>
-            {isSubmitting ? 'Saving...' : 'Save applicant info'}
+            {isSubmitting ? t('form.savingButton') : t('form.saveButton')}
           </button>
-          {saveSuccess && <span className={styles.saveSuccess}>✓ Saved!</span>}
+          {saveSuccess && <span className={styles.saveSuccess}>{t('form.saveSuccess')}</span>}
         </div>
       </form>
     </div>
