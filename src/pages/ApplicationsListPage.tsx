@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useApplicationsList } from '../hooks';
-import { EmptyState } from '../components/EmptyState/EmptyState';
+import { EmptyState } from '../components';
 import {SpinnerDotted} from "spinners-react";
 import styles from './ApplicationsListPage.module.scss';
 

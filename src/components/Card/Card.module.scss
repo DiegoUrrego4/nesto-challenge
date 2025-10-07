@@ -1,4 +1,5 @@
-@import '../../variables';
+@use 'sass:color';
+@use '../../variables' as var;
 
 .card {
   width: 40rem;
@@ -32,7 +33,7 @@
     left: 0;
     width: 100%;
     height: 0.6rem;
-    background: linear-gradient(90deg,$dark-blue-background, $nesto-light-blue, $nesto-red, $nesto-dark-yellow, $button-text);
+    background: linear-gradient(90deg,var.$dark-blue-background, var.$nesto-light-blue, var.$nesto-red, var.$nesto-dark-yellow, var.$button-text);
   }
 }
 
@@ -42,20 +43,20 @@
 
 .title {
   font-size: 2.2rem;
-  color: $nesto-light-blue;
+  color: var.$nesto-light-blue;
   font-weight: bold;
   margin: 0;
 }
 
 .subtitle {
   font-size: 1.5rem; 
-  color: $input-text;
+  color: var.$input-text;
   margin: 0.5rem 0;
 }
 
 .productName {
   font-size: 1.5rem;
-  color: $input-text;
+  color: var.$input-text;
   margin-top: 0;
   margin-bottom: 2rem;
 }
@@ -63,18 +64,18 @@
 .rate {
   font-size: 6.8rem; 
   font-weight: 800; 
-  color: $dark-blue-background; 
+  color: var.$dark-blue-background; 
   margin: 2rem 0;
 }
 
 .button {
   width: 100%;
   padding: 1.4rem;
-  border: 0.1rem solid $primary-link;
+  border: 0.1rem solid var.$primary-link;
   border-radius: 5rem;
   
   background-color: transparent;
-  color: $primary-link;
+  color: var.$primary-link;
   
   font-size: 1.6rem;
   font-weight: 700;
@@ -85,7 +86,7 @@
 
   &:hover {
     transform: scale(1.03);
-    background-color: darken($primary-link, 8%);
-    color: $button-text;
+    background-color: color.adjust(var.$nesto-red, $lightness: -8%);
+    color: var.$button-text;
   }
 }

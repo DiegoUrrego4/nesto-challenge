@@ -1,17 +1,16 @@
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { SpinnerDotted } from 'spinners-react';
 import { useApplicationDetails } from '../hooks/useApplicationDetails';
 import { Card, ContactForm } from '../components';
 import styles from './ApplicationFormPage.module.scss';
 
 export const ApplicationFormPage = () => {
-  // const { applicationId } = useParams<{ applicationId: string }>();
+  const { applicationId } = useParams<{ applicationId: string }>();
   const { application, product, isLoading, error } =
-    useApplicationDetails("d2a798ee-de63-4c92-b508-863693b0bede");
-    // useApplicationDetails(applicationId);
+    useApplicationDetails(applicationId);
 
   if (isLoading) {
-     return <SpinnerDotted className={styles.centered} color="red" />;
+    return <SpinnerDotted className={styles.centered} color="red" />;
   }
 
   if (error || !application || !product) {

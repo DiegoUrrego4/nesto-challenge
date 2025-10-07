@@ -1,6 +1,5 @@
 import axios, { type AxiosInstance } from 'axios';
-import type { Product } from '../types/product';
-import type { Application, CreateApplication } from '../types';
+import type { Application, CreateApplication, Product } from '../types';
 
 const DEFAULT_HEADERS = {
   Accept: 'application/json',

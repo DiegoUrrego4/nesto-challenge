@@ -1,4 +1,4 @@
-@import '../variables';
+@use '../variables' as var;
 
 .listContainer {
   width: 100%;
@@ -30,12 +30,12 @@
 
   th {
     font-weight: 600;
-    color: $input-text;
-    background-color: rgba($nesto-dark-yellow , 0.5);
+    color: var.$input-text;
+    background-color: rgba(var.$nesto-dark-yellow , 0.5);
   }
 
   td {
-    color: $dark-blue-background;
+    color: var.$dark-blue-background;
   }
 }
 
@@ -47,7 +47,7 @@
   text-decoration: none;
   font-weight: 600;
   font-size: 1.4rem;
-  color: $input-text;
+  color: var.$input-text;
   background-color: #fff;
   transition: background-color 0.2s ease, border-color 0.2s ease;
 

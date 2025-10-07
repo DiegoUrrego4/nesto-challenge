@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import noApplicationsImage from '@/assets/no-applications.png';
-import styles from './EmptyState.module.scss'; // Crearemos este archivo
+import styles from './EmptyState.module.scss';
 
 export const EmptyState = () => {
     return (

@@ -1,4 +1,4 @@
-@import '../../variables';
+@use '../../variables' as var;
 
 .navbar {
   background-color: #ffffff;
@@ -28,8 +28,8 @@
 
 .navLinks {
   .link {
-    font-family: $font-family;
-    color: $heading-color;
+    font-family: var.$font-family;
+    color: var.$heading-color;
     text-decoration: none;
     font-weight: 600;
     font-size: 1.6rem;
@@ -38,12 +38,12 @@
     transition: color 0.2s ease, background-color 0.2s ease;
 
     &:hover {
-      color: $primary-link-dark;
+      color: var.$primary-link-dark;
     }
 
     &.active {
-      color: $primary-link;
-      background-color: rgba($primary-link, 0.08);
+      color: var.$primary-link;
+      background-color: rgba(var.$primary-link, 0.08);
     }
   }
 }

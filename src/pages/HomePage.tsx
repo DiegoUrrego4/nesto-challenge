@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { Card } from '../components/Card/Card';
 import { SpinnerDotted } from 'spinners-react';
+import { Card } from '../components';
 import { useMortgageProducts } from '../hooks';
 import { createApplication } from '../services/api';
 import styles from './HomePage.module.scss';
@@ -11,14 +11,13 @@ export const HomePage = () => {
     useMortgageProducts();
 
   const handleSelectedProduct = async (productId: number) => {
-    //   try {
-    //   const newApplication = await createApplication(productId);
-    //   console.log('ID de aplicación para pruebas:', newApplication.id);
-    //   navigate(`/application/${newApplication.id}`);
-    // } catch (error) {
-    //   console.error('Falló la creación para pruebas:', error);
-    // }
-    navigate(`/application/${productId}`);
+      try {
+      const newApplication = await createApplication(productId);
+      console.log('ID de aplicación para pruebas:', newApplication.id);
+      navigate(`/application/${newApplication.id}`);
+    } catch (error) {
+      console.error('Falló la creación para pruebas:', error);
+    }
   };
 
   if (isLoading) {
