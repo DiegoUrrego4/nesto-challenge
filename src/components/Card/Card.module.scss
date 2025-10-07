@@ -86,7 +86,7 @@
 
   &:hover {
     transform: scale(1.03);
-    background-color: color.adjust(var.$red, $lightness: -8%);
+    background-color: color.adjust(var.$light-blue, $lightness: -8%);
     color: var.$button-text;
   }
 }
