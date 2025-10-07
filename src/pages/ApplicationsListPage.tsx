@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { SpinnerDotted } from 'spinners-react';
 import { useApplicationsList } from '../hooks/useApplicationsList';
 import { usePagination } from '../hooks/usePagination';
 import { EmptyState } from '../components/EmptyState/EmptyState';
@@ -17,7 +18,7 @@ export const ApplicationsListPage = () => {
   } = usePagination(applications, 5);
 
   if (isLoading) {
-    return <div className={styles.centeredMessage}>Loading applications...</div>;
+    return <SpinnerDotted className={styles.centered} color="red" />;
   }
 
   if (error) {
