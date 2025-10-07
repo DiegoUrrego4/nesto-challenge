@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { formatProductFamily } from '../../utils';
 import styles from './Card.module.scss';
 
-interface CardProps {
+export interface CardProps {
   id: number;
   title: string;
   type: string;
