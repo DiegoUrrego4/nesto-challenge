@@ -1,21 +1,42 @@
-import type { Preview } from '@storybook/react-vite'
+import { useEffect } from 'react';
+import type { Preview } from '@storybook/react-vite';
+import i18n from '../src/i18n';
 
 const preview: Preview = {
   parameters: {
     controls: {
       matchers: {
-       color: /(background|color)$/i,
-       date: /Date$/i,
+        color: /(background|color)$/i,
+        date: /Date$/i,
       },
     },
-
-    a11y: {
-      // 'todo' - show a11y violations in the test UI only
-      // 'error' - fail CI on a11y violations
-      // 'off' - skip a11y checks entirely
-      test: 'todo'
-    }
   },
+  globalTypes: {
+    locale: {
+      name: 'Locale',
+      description: 'Internationalization locale',
+      toolbar: {
+        icon: 'globe',
+        items: [
+          { value: 'en', right: '🇺🇸', title: 'English' },
+          { value: 'es', right: '🇪🇸', title: 'Español' },
+          { value: 'fr', right: '🇨🇦', title: 'Français' },
+        ],
+        showName: true,
+      },
+    },
+  },
+  decorators: [
+    (Story, context) => {
+      const { locale } = context.globals;
+
+      useEffect(() => {
+        i18n.changeLanguage(locale);
+      }, [locale]);
+
+      return Story();
+    },
+  ],
 };
 
 export default preview;
